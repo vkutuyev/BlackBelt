@@ -1,0 +1,17 @@
+<div ng-controller='BucketsController' id=login>
+
+    <div class="row">
+        <span id="loglabel">ENTER NAME</span>
+    </div>
+    <div class="row input-field">
+        <input type="text" id=nameinput ng-model='username'>
+    </div>
+    <div class="row">
+        <button type="button" id=namebtn ng-click='login()' ng-disabled='!username'>SUBMIT</button>
+    </div>
+
+    <div ng-show='error'>
+        {{ error }}
+    </div>
+
+</div>

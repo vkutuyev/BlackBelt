@@ -1,0 +1,50 @@
+<div class="" ng-controller='BucketsController'>
+
+    <div id="header">
+        <span class='onLink'>Home</span> |
+        <a href="#/index">Logout</a>
+    </div>
+
+    <h3>Welcome, {{ currentUser.name }}!</h3>
+
+    <div id='bucketinput'>
+        <form id=bucketform>
+
+            <input id='title' type="text" placeholder='Title' ng-model='bucketItem.title'>
+            <input id='desc' type="text" placeholder='Description' ng-model='bucketItem.desc'>
+            <select id='tagged' class='browser-default' ng-options="user.name for user in users | filter: { name: '!' + currentUser.name }" ng-model='taggedName'>
+                <option value='' selected>Users</option>
+            </select>
+
+            <button id='addbtn' type="button" ng-click='addItem()' ng-disabled='!bucketItem.title || !bucketItem.desc'>Add</button>
+
+        </form>
+    </div>
+
+    <span id="erorrmsg">{{ error }}</span>
+
+    <div id="bucketlist">
+
+        <h4><u>Bucket List</u></h4>
+
+        <div class="row" ng-repeat='item in buckets track by $index'>
+            <i class="material-icons {{item.done}}" ng-click='done(item)'>done</i>
+            <span class='listtext'>{{ item.title }} || {{ item.desc }} || {{ item.created }}</span>
+        </div>
+
+    </div>
+
+    <div id="userlist">
+        <table>
+            <thead>
+                <th>Other Users</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users | filter: { name: '!' + currentUser.name }">
+                    <td><a href='#/user/{{user._id}}'>{{ user.name }}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

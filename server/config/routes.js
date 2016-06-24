@@ -1,22 +1,24 @@
-var controller1 = require('./../controllers/controller1.js');
-var controller2 = require('./../controllers/controller2.js');
+var buckets = require('./../controllers/buckets.js');
 
 module.exports = function(app) {
 
-    // app.get('/getUsers', function(req, res){
-    //     users.getUsers(req, res);
-    // })
-    //
-    // app.post('/login', function(req, res){
-    //     users.login(req, res);
-    // })
-
-    // app.get('/getPosts', function(req, res){
-    //     posts.getPosts(req, res);
-    // })
-    //
-    // app.post('/addPost', function(req, res){
-    //     posts.addPost(req, res);
-    // })
+    app.post('/login', function(req, res){
+        buckets.login(req, res);
+    })
+    app.get('/users', function(req, res){
+        buckets.getAll(req, res);
+    })
+    app.post('/addBucket', function(req, res){
+        buckets.addBucket(req, res);
+    })
+    app.post('/allBuckets', function(req, res){
+        buckets.getBuckets(req, res);
+    })
+    app.post('/done', function(req, res){
+        buckets.done(req, res);
+    })
+    app.post('/getUser', function(req, res){
+        buckets.getUser(req, res);
+    })
 
 }
